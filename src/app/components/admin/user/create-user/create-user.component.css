@@ -1,0 +1,17 @@
+.example-form-field {
+    width: 200px;
+}
+@font-face {
+    font-family: arm;
+    src: url(../../../../../assets/fonts/Adminfont.ttf) format("opentype");
+}
+
+#fontsize{
+    font-size: 70px;
+}
+.armfont01 {
+    font-family: 'arm', 'arial', sans-serif;
+}
+.example-form-field {
+    width: 200px;
+}

@@ -1,0 +1,136 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">โชควาสนา นะจ้ะ</h1>
+                </div>
+
+            </div>
+            <section class="section">
+                <div class="card ">
+                    <mat-card>
+                        <!-- (submit)="onEditProduct(userForm)" #userForm="ngForm" -->
+                        <form (submit)="onAddProduct(productForm)" #productForm="ngForm">
+                            <mat-card-header class="d-flex justify-content-between align-items-center">
+                                <mat-card-title class="armfont01">เพิ่มสินค้า</mat-card-title>
+                                <div>
+                                    <!-- [disabled]="productForm.form.invalid" -->
+                                    <button type="submit" mat-raised-button color="primary" class="p-2"
+                                        class="armfont01">บันทึก</button> |
+                                    <!-- (click)="onClickCancel()" -->
+                                    <button type="button" mat-raised-button color="warn" class="armfont01"
+                                        (click)="onClickCancel()">ยกเลิก</button>
+                                </div>
+                            </mat-card-header>
+                            <mat-card-content class="mt-4">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>ไอดี</mat-label>
+                                            <input matInput #message01 maxlength="1000" #localID="ngModel" required
+                                                [ngClass]="{'is-invalid': localID.errors && localID.touched}"
+                                                type="number" [(ngModel)]="mProduct.id" name="id">
+                    
+                                            <mat-hint align="end">{{message01.value}} / 1000</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <mat-form-field appearance="fill" class="w-100">
+                                            <mat-label>ชนิดสินค้า</mat-label>
+                                            <mat-select [(ngModel)]="mProduct.idTypeProduct" name="idTypeProduct">
+                                                <mat-option *ngFor="let type of typeproduct" [value]="type.id">
+                                                    {{type.name}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>ชื่อสินค้า</mat-label>
+                                            <input matInput #message02 maxlength="256" #localName="ngModel" required
+                                                [ngClass]="{'is-invalid': localName.errors && localName.touched}"
+                                                type="text" [(ngModel)]="mProduct.name" name="name">
+                                            <mat-hint align="end">{{message02.value.length}} / 255</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>ราคาสินค้า</mat-label>
+                                            <input matInput #message03 maxlength="10000000" #localPrice="ngModel" required
+                                                [ngClass]="{'is-invalid': localPrice.errors && localPrice.touched}"
+                                                type="number" [(ngModel)]="mProduct.price" name="price">
+                                            <mat-hint align="end">{{message03.value}} / 10000000</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>จำนวนสินค้าปัจจุบัน</mat-label>
+                                            <input matInput #message04 maxlength="10000000" #localStock="ngModel" required
+                                                [ngClass]="{'is-invalid': localStock.errors && localStock.touched}"
+                                                type="number" [(ngModel)]="mProduct.stock" name="stock">
+                                            <mat-hint align="end">{{message04.value}} / 10000000</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>สีของสินค้า</mat-label>
+                                            <input matInput #message05 maxlength="255" #localColor="ngModel" required
+                                                [ngClass]="{'is-invalid': localColor.errors && localColor.touched}"
+                                                type="text" [(ngModel)]="mProduct.color" name="color">
+                                            <mat-hint align="end">{{message05.value.length}} / 255</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>รูปร่างสินค้า</mat-label>
+                                            <input matInput #message06 maxlength="255" #localShape="ngModel" required
+                                                [ngClass]="{'is-invalid': localShape.errors && localShape.touched}"
+                                                type="text" [(ngModel)]="mProduct.shape" name="shape">
+                                            <mat-hint align="end">{{message06.value.length}} / 255</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </mat-card-content>
+                        </form>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!-- พอ กด ที่ button ให้มาทำที่ input -->
+                                <button mat-stroked-button (click)="inputFile.click()" color="primary" type="button">
+                                    <mat-icon>photo</mat-icon>
+                                    <span class="armfont01">
+                                        รูปภาพ
+                                    </span>
+                                </button>
+                                <!-- change หรือ click ก็ได้ -->
+                                <input (change)="onUploadImage($event)" hidden #inputFile type="file" accept="image/*">
+                            </div>
+                            <div class="col-md-4" *ngIf="imageSrc">
+                                <!-- [src]="imageSrc" -->
+                                <img [src]="imageSrc" class="img-fluid border rounded-top rounded-bottom">
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

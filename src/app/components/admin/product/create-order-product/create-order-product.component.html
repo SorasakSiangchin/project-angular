@@ -1,0 +1,86 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">สั่งสินค้าเพิ่ม นะจ้ะ</h1>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card">
+                    <mat-card>
+                        <!-- (submit)="onEditProduct(userForm)" #userForm="ngForm" -->
+                        <form (submit)="OrderProductForm(orderproductForm)" #orderproductForm="ngForm">
+                            <mat-card-header class="d-flex justify-content-between align-items-center">
+                                <mat-card-title class="armfont01">สั่งซื้อเลย</mat-card-title>
+                                <div>
+                                    <!-- [disabled]="productForm.form.invalid" -->
+                                    <button type="submit" mat-raised-button color="primary" class="p-2"
+                                        class="armfont01">บันทึก</button> |
+                                    <!-- (click)="onClickCancel()" -->
+                                    <button type="button" mat-raised-button color="warn" class="armfont01"
+                                        (click)="onClickCancel()">ยกเลิก</button>
+                                </div>
+                            </mat-card-header>
+                            <mat-card-content class="mt-4">
+                                <div class="d-flex justify-content-center">
+                                   
+                                        <div class="col-md-4">
+                                            <div class="example-container">
+                                                <mat-form-field appearance="fill">
+                                                  <mat-label>จำนวนที่สั่ง</mat-label>
+                                                  <input type="number" matInput required [(ngModel)]="mOrderProduct.stock" name="stock">
+                                                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                                </mat-form-field>
+                                              </div>
+                                        </div>
+                                        <!-- <mat-form-field class="example-full-width w-100" appearance="fill">
+                                                <mat-label>จำนวนสินค้าปัจจุบัน</mat-label>
+                                                <input matInput #message04 maxlength="10000000" #localStock="ngModel" required
+                                                    [ngClass]="{'is-invalid': localStock.errors && localStock.touched}"
+                                                    type="number" [(ngModel)]="mProduct.stock" name="stock">
+                                                <mat-hint align="end">{{message04.value}} / 10000000</mat-hint>
+                                            </mat-form-field> -->
+                                        <div class="col-md-4">
+                                            <div class="example-container">
+                                                <mat-form-field appearance="fill">
+                                                  <mat-label>สั่งวันที่</mat-label>
+                                                  <input matInput type="date" [(ngModel)]="mOrderProduct.date" name="date" required>
+                                                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                                </mat-form-field>
+                                              </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="example-container">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>สินค้าที่สั่งเพิ่ม</mat-label>
+                                                    <mat-select [(ngModel)]="mOrderProduct.idProduct" name="idProduct">
+                                                      <mat-option *ngFor="let i of mProduct" [value]="i.id">
+                                                        {{i.name}}
+                                                      </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                              </div>
+                                        </div>
+                                </div>
+                            </mat-card-content>
+                        </form>
+                        
+                    </mat-card>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

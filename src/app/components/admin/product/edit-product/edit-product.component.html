@@ -1,0 +1,153 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">โชควาสนา นะจ้ะ</h1>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card ">
+                    <mat-card>
+                        <form (submit)="onEditProduct(userForm)" #userForm="ngForm">
+                            <mat-card-header class="d-flex justify-content-between align-items-center">
+                                <mat-card-title class="armfont01">แก้ไขข้อมูลสินค้า</mat-card-title>
+                                <div>
+                                    <!-- [disabled]="productForm.form.invalid" -->
+                                    <button type="submit" mat-raised-button color="primary" class="p-2"
+                                        class="armfont01">บันทึก</button> |
+                                    <!-- (click)="onClickCancel()" -->
+                                    <button type="button" mat-raised-button color="warn" class="armfont01"
+                                        (click)="onClickCancel()">ยกเลิก</button>
+                                </div>
+                            </mat-card-header>
+                            <mat-card-content class="mt-4">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>ไอดี</mat-label>
+                                            <input type="number" matInput name="id" required readonly>
+                                            <mat-error
+                                                *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                                Please enter a valid email address
+                                            </mat-error>
+                                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                                Email is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <mat-form-field appearance="fill" class="w-100">
+                                            <mat-label>ชนิดสินค้า</mat-label>
+                                            <mat-select [(ngModel)]="mProduct.idTypeProduct" name="idTypeProduct">
+                                                <mat-option *ngFor="let type of mTypeProduct" [value]="type.id">
+                                                    {{type.name}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>ชื่อ</mat-label>
+                                            <input matInput required name="name" #localName="ngModel"
+                                                [ngClass]="{'is-invalid': localName.errors && localName.touched}"
+                                                [(ngModel)]="mProduct.name">
+                                            <mat-error
+                                                *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                                Please enter a valid email address
+                                            </mat-error>
+                                            <mat-error class="invalid-feedback">
+                                                ข้อมูล <strong>ผิดพลาด</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>จำนวน</mat-label>
+                                            <input matInput required name="stock" #localStock="ngModel"
+                                                [ngClass]="{'is-invalid': localStock.errors && localStock.touched}"
+                                                [(ngModel)]="mProduct.stock">
+                                            <mat-error class="invalid-feedback">
+                                                ข้อมูล <strong>ผิดพลาด</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>ราคา</mat-label>
+                                            <input matInput required name="price" #localPrice="ngModel"
+                                                [ngClass]="{'is-invalid': localPrice.errors && localPrice.touched}"
+                                                [(ngModel)]="mProduct.price">
+                                            <mat-error class="invalid-feedback">
+                                                ข้อมูล <strong>ผิดพลาด</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>สี</mat-label>
+                                            <input matInput required name="color" #localColor="ngModel"
+                                                [ngClass]="{'is-invalid': localColor.errors && localColor.touched}"
+                                                [(ngModel)]="mProduct.color">
+                                            <mat-error class="invalid-feedback">
+                                                ข้อมูล <strong>ผิดพลาด</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>รูปร่าง</mat-label>
+                                            <input matInput required name="shape" #localShape="ngModel"
+                                                [ngClass]="{'is-invalid': localShape.errors && localShape.touched}"
+                                                [(ngModel)]="mProduct.shape">
+                                            <mat-error class="invalid-feedback">
+                                                ข้อมูล <strong>ผิดพลาด</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </mat-card-content>
+                        </form>
+                        <div class="row">
+                            <!-- ภาพเดิม                      ภาพไหม่ไม่มี           ภาพเก่ามี         -->
+                            <div class="col-md-4" *ngIf="imageSrc == null && mProduct.image != null">
+                                <img src="{{backendUrl}}{{mProduct.image}}?timestamp={{timestamp}}"
+                                    class="img-fluid border rounded-top rounded-bottom">
+                            </div>
+                            <!-- ภาพใหม่               ภาพไหม่มี  -->
+                            <div class="col-md-4" *ngIf="imageSrc">
+                                <img src="{{imageSrc}}" class="img-fluid border rounded-top rounded-bottom"
+                                    width="300px" height="100px">
+                            </div>
+
+                            <div class="col-md-8">
+                                <button mat-stroked-button color="primary" (click)="inputFile.click()">
+                                    <mat-icon>photo</mat-icon>
+                                    <span>Selected file</span>
+                                </button>
+                                <input (change)="onUploadImage($event)" hidden #inputFile type="file" accept="image/*"
+                                    id="">
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">ส่งสินค้า นะจ้ะ</h1>
+                </div>
+            </div>
+            <section class="section">
+                <form (submit)="onAddDeliverry(DeliverryForm)" #DeliverryForm="ngForm">
+                    <div class="card">
+                        <div class="d-flex justify-content-center mt-32">
+                            <div class="text-info" id="fontsize01">
+                                {{DataDeliverry?"- แก้ไขการจัดส่ง -":"- เพิ่มข้อมูลการจัดส่ง -"}}
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center m-4">
+                            <div class="cardarm">
+                                <div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label class="armfont">ส่งถึงวันที่</mat-label>
+                                        <input matInput [(ngModel)]="mDeliverry.date" name="date"
+                                            placeholder="Ex. Pizza" type="date">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label class="armfont">สถานะการจัดส่ง</mat-label>
+                                        <mat-select [(ngModel)]="mDeliverry.idStatus" name="idStatus">
+                                            <mat-option [value]="item.id" *ngFor="let item of DataStatusDeliverry">{{
+                                                item.status }}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <button mat-raised-button type="submit" class="ml-2 armfont" color="primary">ตกลง</button>
+                            <button *ngIf="!DataDeliverry" type="button" mat-flat-button color="warn" class="ml-2" (click)="back()">
+                                <mat-icon>keyboard_return</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- ----------------------------- DataDelivery Show ----------------------------------------- -->
+                <div class="d-flex justify-content-center mt-2" *ngIf="DataDeliverry">
+                    <mat-card class="example-card w-100">
+                        <div class="text-center armfont">
+                            <mat-card-title>ข้อมูลการจัดส่ง</mat-card-title>
+                            <mat-card-subtitle>ไอดีที่ <strong>{{DataDeliverry.id}}</strong></mat-card-subtitle>
+                        </div>
+                        <mat-card-content>
+                            <p class="armfontX2">
+                                <B>ใบสั่งที่</B> : <strong>{{DataDeliverry.idOrder}}</strong>
+                            </p>
+                            <p class="armfontX2">
+                                <B>ส่งถึงวันที่</B> : <strong>{{DataDeliverry.date|date}}</strong>
+                            </p>
+                            <p class="armfontX2">
+                                <B>สถานะการจัดส่ง</B> : <strong>{{DataDeliverry.idStatusNavigation.status}}</strong>
+                            </p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-stroked-button color="warn" (click)="back()">
+                                <mat-icon>keyboard_return</mat-icon>
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+                <!-- -------------------------------------------------------------------------------- -->
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

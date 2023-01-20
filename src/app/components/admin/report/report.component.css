@@ -1,0 +1,16 @@
+@font-face {
+    font-family: arm;
+    src: url(../../../../assets/fonts/Adminfont.ttf) format("opentype");
+  }
+
+
+  .armfont01 {
+    font-family: 'arm', 'arial', sans-serif;
+  }
+
+#fontsize{
+    font-size: 70px;
+}
+#fontsize01{
+    font-size: 10px;
+}

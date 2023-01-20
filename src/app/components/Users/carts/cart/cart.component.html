@@ -1,0 +1,50 @@
+<div class="m-5" *ngIf="cart.NumberLacal != 0">
+    <div class="d-flex justify-content-end">
+        <div>
+            <div class="w-100">
+                <button mat-stroked-button color="accent" class="armfont01" (click)="cart.makeFormList()">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">
+                        library_add
+                    </mat-icon>
+                    ยืนยันการสั่งซื้อ
+                </button>
+            </div>
+        </div>
+        <div class="ml-2">
+            <div class="w-100">
+                <button mat-stroked-button color="warn" class="armfont01" (click)="DeleteLocal()">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">
+                        delete
+                    </mat-icon>
+                    ลบสินค้าในตะกร้า
+                </button>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover mt-3">
+        <thead>
+            <tr class="armfont01">
+                <th scope="col">ไอดีสินค้า</th>
+                <th scope="col">ราคาสินค้า</th>
+                <th scope="col">จำนวนสินค้าที่สั่ง</th>
+                <th scope="col">สินค้าทั้งหมด {{cart.NumberLacal}} รายการ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of DataCart" class="armfont01">
+                <th scope="row">{{c.idProduck}}</th>
+                <td>{{c.priceProduct}} บาท</td>
+                <td>{{c.numberProduct}}</td>
+                <td>
+                    <button mat-flat-button color="primary" class="armfont01"
+                        [routerLink]="[ '/detailcart', c.idProduck ]">ข้อมูลสินค้า</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="cart.NumberLacal == 0" class="d-flex justify-content-center">
+    <div class="alert alert-danger armfont01" role="alert">
+        ไม่มีสินค้าในตะกร้า!
+    </div>
+</div>

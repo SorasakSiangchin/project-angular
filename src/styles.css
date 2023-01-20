@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+    font-family: lato;
+    src: url(assets/fonts/TAChailai.otf) format("opentype");
+  }
+  .armfont {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-family: 'lato', 'arial', sans-serif;
+  }
+
+@font-face {
+    font-family: arm;
+    src: url(assets/fonts/tahomo.ttf) format("opentype");
+  }
+
+
+  .armfont01 {
+    font-size: 20px;
+    font-family: 'arm', 'arial', sans-serif;
+  }

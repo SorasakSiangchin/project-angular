@@ -1,0 +1,84 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">รายละเอียดใบสั่ง นะจ้ะ</h1>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card">
+                    <div class="m-auto">
+                        <div class="m-32">
+                            <mat-card class="example-card">
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <mat-card-subtitle class="armfont01">
+                                            ใบสั่งที่ : <strong>{{DataOrder.id}}</strong>
+                                        </mat-card-subtitle>
+                                    </div>
+                                </div>
+                                <mat-card-content>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="armfont01">
+                                            สถานะการจ่ายเงิน :
+                                            <B>{{DataOrder.statusMoney?"ยืนยันเรียบร้อย":"ยังไม่ได้ยืนยัน"}}</B>
+                                        </p>
+                                        <p class="ml-3 armfont01">
+
+                                            สั่งซื้อเมื่อ :
+                                            <B>{{DataOrder.date|date}}</B>
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-between ">
+                                        <p class="armfont01">
+                                            ราคารวม :
+                                            <B>{{DataOrder.priceTotal}}</B>
+                                            บาท
+                                        </p>
+                                        <p class="ml-3 armfont01">
+                                            หลักฐานการชำระเงิน :
+                                            <B>{{DataOrder.proofTransfer?"มีหลักฐาน":"ไม่มีหลักฐาน"}} <a
+                                                    [routerLink]="[ '/#' ]" (click)="status=!status"
+                                                    *ngIf="DataOrder.proofTransfer">
+                                                    <mat-icon color="primary">image_search</mat-icon>
+                                                </a>
+                                            </B>
+
+                                        </p>
+                                    </div>
+                                </mat-card-content>
+                                <img *ngIf="DataOrder.proofTransfer && status" class="img m-auto"
+                                    src="https://localhost:44360/{{DataOrder.proofTransfer}}" alt="">
+
+                                <mat-divider inset class="mt-3"></mat-divider>
+                                <mat-card-actions>
+                                    <div class="d-flex justify-content-center">
+                                        <button [routerLink]="[ '/menuadmin/detail-order-list' , DataOrder.id ]" mat-stroked-button color="primary" class="armfont01">สินค้าที่สั่ง</button>
+                                        <button mat-stroked-button color="accent" class="armfont01">ข้อมูลผู้สั่งซื้อ</button>
+                                        <button mat-stroked-button color="warn" (click)="back()" class="armfont01">กลับ</button>
+                                    </div>
+                                </mat-card-actions>
+                                <mat-card-footer>
+                                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                                </mat-card-footer>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

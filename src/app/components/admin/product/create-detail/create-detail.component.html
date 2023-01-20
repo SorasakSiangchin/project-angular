@@ -1,0 +1,77 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">โชควาสนา นะจ้ะ</h1>
+                </div>
+
+            </div>
+            <section class="section">
+                <div class="card ">
+                    <mat-card>
+                        <!-- (submit)="onEditProduct(userForm)" #userForm="ngForm" -->
+                        <form (submit)="onAddDetailProduct(productForm)" #productForm="ngForm">
+                            <mat-card-header class="d-flex justify-content-between align-items-center">
+                                <mat-card-title class="armfont01">เพิ่มรายละเอียดสินค้า สินค้าที่ {{IdProduct}}
+                                </mat-card-title>
+                                <div>
+
+                                    <!-- [disabled]="productForm.form.invalid" -->
+                                    <button *ngIf="images.length != 0" type="submit" mat-raised-button color="primary" class="p-2"
+                                        class="armfont01">บันทึก</button> |
+                                    <!-- (click)="onClickCancel()" -->
+                                    <button type="button" mat-raised-button color="warn" class="armfont01"
+                                        (click)="onClickCancel()">ยกเลิก</button>
+                                </div>
+                            </mat-card-header>
+                        </form>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <!-- พอ กด ที่ button ให้มาทำที่ input -->
+                                <button mat-stroked-button (click)="inputFile.click()" color="primary" type="button">
+                                    <mat-icon>photo</mat-icon>
+                                    <span class="armfont01">
+                                        เพิ่มรูปภาพ <span *ngIf="images.length != 0">{{images.length}}</span>
+                                    </span>
+                                </button>
+                                <!-- change หรือ click ก็ได้ -->
+                                <!-- multiple เลือกหลายไฟล์ -->
+                                <input (change)="onUploadImage($event)" hidden #inputFile type="file" accept="image/*"
+                                    multiple >
+                            </div>
+                            <div class="ml-2" *ngIf="images.length != 0">
+                                <button mat-stroked-button (click)="RefreshImage()" color="warn" type="button">
+                                    <mat-icon>delete</mat-icon>
+                                    <span class="armfont01">
+                                        ลบรูปภาพทั้งหมด
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4" *ngFor='let url of images'>
+                                <img class="imageCss imageSize" [src]="url" #inputFile style="margin: 3px;">
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">ประเภทสินค้า นะจ้ะ</h1>
+                </div>
+            </div>
+            <div class="w-100">
+                <div class="d-flex justify-content-end">
+                    <diV>
+                        
+                    </diV>
+                    <div>
+                        <button [routerLink]="[ '/menuadmin/createtypeproduct' ]" mat-raised-button color="primary" ><i class="fas fa-plus-circle fontsize p-2"></i></button>
+                    </div>
+                  </div>
+            </div>
+            <section class="section mt-4">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-4 w-100 mt-3" *ngFor="let type of typeproduct">
+                            <mat-card class="example-card card card01">
+                                <mat-card-content>
+                                    <h1 class="text-center armfont02">
+                                        {{type.name}}
+                                    </h1>
+                                </mat-card-content>
+                                <mat-card-actions class="d-flex justify-content-center">
+                                    <div>
+                                        <button mat-raised-button color="accent" [routerLink]="[ '/menuadmin/edittypeproduct', type.id ]">
+                                            <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+                                        </button>
+                                        <button mat-raised-button color="warn" (click)="deleteProduct(type.id)">
+                                            <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                                        </button>
+                                    </div>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

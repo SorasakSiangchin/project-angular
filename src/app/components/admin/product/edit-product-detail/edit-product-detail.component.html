@@ -1,0 +1,118 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">โชควาสนา นะจ้ะ</h1>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card">
+                    <mat-card>
+                        <form (submit)="onEditDetailProduct(detailproductForm)" #detailproductForm="ngForm">
+                            <mat-card-header class="d-flex justify-content-between align-items-center">
+                                <mat-card-title class="armfont01">แก้ไขข้อมูลรายละเอียดสินค้าสินค้า</mat-card-title>
+                                <div>
+                                    <!-- [disabled]="productForm.form.invalid" -->
+                                    <button type="submit" mat-raised-button color="primary" class="p-2"
+                                        class="armfont01">บันทึก</button> |
+                                    <!-- (click)="onClickCancel()" -->
+                                    <button type="button" mat-raised-button color="warn" class="armfont01"
+                                        (click)="onClickCancel()">ยกเลิก</button>
+                                </div>
+                            </mat-card-header>
+                            <mat-card-content class="mt-4">
+                                <div class="row">
+                                    <!-- id -->
+                                    <div class="col-md-3">
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label class="armfont01">ไอดี</mat-label>
+                                            <input matInput name="id" type="text" required readonly>
+                                        </mat-form-field>
+                                    </div>
+                                    <!-- idproduct -->
+                                    <div class="col-md-3">
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label class="armfont01">ไอดีสินค้า</mat-label>
+                                            <input matInput name="idProduct" type="text" required readonly>
+                                        </mat-form-field>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label class="armfont01">น้ำหนัก</mat-label>
+                                            <input matInput required name="weight" #localWeight="ngModel"
+                                                [ngClass]="{'is-invalid': localWeight.errors && localWeight.touched}"
+                                                [(ngModel)]="ProductDetail.weight">
+                                            <mat-hint >ข้อผิดพลาดปรากฏขึ้นทันที!</mat-hint>
+                                            <mat-error
+                                                *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                                Please enter a valid email address
+                                            </mat-error>
+                                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                                กรุราใส่ <strong>ข้อมูล</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-md-12">
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label class="armfont01">ข้อมูลเพิ่มเติม</mat-label>
+                                            <input matInput required name="dataMore" #localDataMore="ngModel"
+                                                [ngClass]="{'is-invalid': localDataMore.errors && localDataMore.touched}"
+                                                [(ngModel)]="ProductDetail.dataMore">
+                                            <mat-hint >ข้อผิดพลาดปรากฏขึ้นทันที!</mat-hint>
+                                            <mat-error
+                                                *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                                Please enter a valid email address
+                                            </mat-error>
+                                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                                กรุราใส่ <strong>ข้อมูล</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                       
+                                    </div>
+                                </div>
+
+                            </mat-card-content>
+                        </form>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button mat-stroked-button color="primary" (click)="inputFile.click()">
+                                    <mat-icon>photo</mat-icon>
+                                    <span>Selected file</span>
+                                </button>
+                                <input (change)="onUploadImage($event)" hidden #inputFile type="file" accept="image/*"
+                                >
+                            </div>  
+
+                            <!-- ภาพเดิม                      ภาพไหม่ไม่มี           ภาพเก่ามี         -->
+                            <div class="col-md-4" *ngIf="imageSrc == null && ProductDetail.image != null">
+                                <img src="{{backendUrl}}{{ProductDetail.image}}?timestamp={{timestamp}}"
+                                    class="img-fluid border rounded-top rounded-bottom">
+                            </div>
+                            <!-- ภาพใหม่               ภาพไหม่มี  -->
+                            <div class="col-md-4" *ngIf="imageSrc">
+                                <img src="{{imageSrc}}" class="img-fluid border rounded-top rounded-bottom"
+                                    width="300px" height="100px">
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

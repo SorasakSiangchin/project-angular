@@ -1,0 +1,122 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">ข้อมูลผู้ใช้ นะจ้ะ</h1>
+                </div>
+
+            </div>
+            <section>
+                <div class="card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label class="armfont01">ค้นหา</mat-label>
+                                <input matInput class="armfont01" (keyup)="applyFilter($event)" #input>
+                                <mat-icon matSuffix>search</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <button [routerLink]="[ '/menuadmin/createuser' ]" mat-raised-button color="primary"
+                                class="example-button-row armfont01 w-100">เพิ่มสมาชิก</button>
+                        </div>
+
+                    </div>
+
+                    <div class="mat-elevation-z8">
+                        <table mat-table [dataSource]="dataSource" matSort class="table-hover">
+
+                            <!-- ID Column -->
+                            <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="armfont02" align='center'>
+                                    ไอดี</th>
+                                <td mat-cell *matCellDef="let row" class="armfont02"> {{row.id}} </td>
+                            </ng-container>
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="email">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="armfont02 text-center">
+                                    อีเมล </th>
+                                <td mat-cell class="armfont02" *matCellDef="let row"> {{row.email}} </td>
+                            </ng-container>
+
+                            <!-- Fruit Column -->
+                            <ng-container matColumnDef="password">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="armfont02 text-center">
+                                    รหัสผ่าน </th>
+                                <td mat-cell *matCellDef="let row" class="armfont02"> {{row.password}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="image">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="armfont02"> รูป </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <ng-container *ngIf="element.image; else Template">
+
+                                        <!-- ?timestamp={{timestamp}} เพื่อให้มันรีเฟรดตอนEdit -->
+                                        <img (click)="DetailUser(element)" class="imgSize m-2"
+                                            src="{{element.image}}?timestamp={{timestamp}}" width="100%" alt="">
+                                    </ng-container>
+                                    <ng-template #Template>
+                                        <h2>
+                                            ไม่มีรูป
+                                        </h2>
+                                    </ng-template>
+                                </td>
+                            </ng-container>
+
+                            <!-- Fruit Column -->
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="armfont02"> ชื่อ </th>
+                                <td mat-cell *matCellDef="let row" class="armfont02"> {{row.name}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="armfont02">
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <!-- [routerLink]="[ '/stockedit', row.id ]" -->
+                                    <button [routerLink]="[ '/menuadmin/edituser', row.id ]" mat-fab color="accent"
+                                        aria-label="Example icon button with a delete icon" class="arm">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    |
+
+                                    <button (click)="deleteUser(row.id)" mat-fab color="warn"
+                                        aria-label="Example icon button with a delete icon" class="arm">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                            <!-- Row shown when there is no matching data. -->
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell armfont01" colspan="5">ไม่มีสิ่งที่คุณค้นหา "{{input.value}}"</td>
+                            </tr>
+                        </table>
+
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100,]" aria-label="Select page of users">
+                        </mat-paginator>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

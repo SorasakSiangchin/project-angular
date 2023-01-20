@@ -1,0 +1,17 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  @font-face {
+    font-family: arm;
+    src: url(../../../../../assets/fonts/tahomo.ttf) format("opentype");
+  }
+
+.armfont01 {
+    font-size: 20px;
+    font-family: 'arm', 'arial', sans-serif;
+}

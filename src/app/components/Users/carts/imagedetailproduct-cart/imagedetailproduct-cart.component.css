@@ -1,0 +1,36 @@
+@font-face {
+    font-family: lato;
+    src: url(../../../../../assets/fonts/TAChailai.otf) format("opentype");
+  }
+
+@font-face {
+    font-family: arm;
+    src: url(../../../../../assets/fonts/tahomo.ttf) format("opentype");
+  }
+
+.armfont {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-family: 'lato', 'arial', sans-serif;
+  }
+
+.armfont01 {
+    font-size: 30px;
+    font-family: 'arm', 'arial', sans-serif;
+  }
+.armfont02 {
+  font-size: 20px;
+  font-family: 'arm', 'arial', sans-serif;
+}
+#fontsine{
+    font-size: 200px;
+}
+#fontsine01{
+  font-size: 63px;
+}
+.example-card {
+    max-width: 400px;
+    margin-bottom: 8px;
+  }

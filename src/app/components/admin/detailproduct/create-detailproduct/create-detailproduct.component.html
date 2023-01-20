@@ -1,0 +1,118 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">โชควาสนา นะจ้ะ</h1>
+                </div>
+            </div>
+            <section>
+                <div class="card">
+                    <mat-card>
+                        <!-- (submit)="onEditProduct(userForm)" #userForm="ngForm" -->
+                        <form (submit)="onAddDetailProduct(detailproductForm)" #detailproductForm="ngForm">
+                            <mat-card-header class="d-flex justify-content-between align-items-center">
+                                <mat-card-title class="armfont01">เพิ่มรายละเอียดสินค้า ไอดีที่
+                                    {{mDetailProduct.idProduct?mDetailProduct.idProduct:"-"}}</mat-card-title>
+                                <div>
+                                    <!-- [disabled]="productForm.form.invalid" -->
+                                    <button type="submit" mat-raised-button color="primary" class="p-2"
+                                        class="armfont01">บันทึก</button> |
+                                    <!-- (click)="onClickCancel()" -->
+                                    <button type="button" mat-raised-button color="warn" class="armfont01"
+                                        (click)="onClickCancel()">ยกเลิก</button>
+                                </div>
+                            </mat-card-header>
+                            <mat-card-content class="mt-4">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <mat-form-field appearance="fill" class="w-100">
+                                            <mat-label class="armfont01">ไอดีสินค้า</mat-label>
+                                            <mat-select [(ngModel)]="mDetailProduct.idProduct" name="idProduct">
+                                                <mat-option>--</mat-option>
+                                                <mat-option *ngFor="let data of midProduct" [value]="data.id">
+                                                    {{data.id}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-form-field w-100" appearance="fill">
+                                            <mat-label class="armfont01">น้ำหนัก</mat-label>
+                                            <input matInput type="number" [(ngModel)]="mDetailProduct.weight"
+                                                name="weight">
+                                            <button *ngIf="mDetailProduct.weight" type="button" matSuffix
+                                                mat-icon-button aria-label="Clear" (click)="mDetailProduct.weight = 0">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <mat-form-field class="example-form-field w-100" appearance="fill">
+                                            <mat-label class="armfont01">ข้อมูลเพิ่มเติม</mat-label>
+                                            <textarea matInput [(ngModel)]="mDetailProduct.dataMore"
+                                                name="dataMore"></textarea>
+                                            <button *ngIf="mDetailProduct.dataMore" type="button" matSuffix
+                                                mat-icon-button aria-label="Clear"
+                                                (click)="mDetailProduct.dataMore = ''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                </div>
+
+                            </mat-card-content>
+                        </form>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <!-- พอ กด ที่ button ให้มาทำที่ input -->
+                                <button mat-stroked-button (click)="inputFile.click()" color="primary" type="button">
+                                    <mat-icon>photo</mat-icon>
+                                    <span class="armfont01">
+                                        รูปภาพ
+                                    </span>
+                                </button>
+                                <!-- change หรือ click ก็ได้ -->
+                                <input (change)="onUploadImage($event)" hidden #inputFile type="file" accept="image/*"
+                                    multiple>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div *ngFor="let item of images" class="col-md-4">
+                                        <!-- [src]="imageSrc" -->
+                                        <img src="{{item}}" class="img-fluid border rounded-top rounded-bottom w-90">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+
+                    <p class="armfont01" *ngFor="let i of midProduct">{{i.id}}2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

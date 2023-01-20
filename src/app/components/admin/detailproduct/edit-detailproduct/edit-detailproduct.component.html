@@ -1,0 +1,80 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">โชควาสนา นะจ้ะ</h1>
+                </div>
+
+            </div>
+            <section class="section">
+                <div class="card ">
+                    <mat-card class="example-card w-100">
+                        <mat-card-header class="d-flex justify-content-between">
+                            <mat-card-title class="armfont01">แก้ไขข้อมูลสินค้า สินค้าที่ {{idProduct}}
+                            </mat-card-title>
+                            <div>
+                                <button mat-stroked-button color="primary" (click)="inputFile.click()" class="w-100">
+                                    <mat-icon>photo</mat-icon>
+                                    <span class="armfont01">รูปภาพ</span>
+                                </button>
+                            </div>
+                            <input (change)="onUploadImage($event)" hidden #inputFile type="file" accept="image/*">
+                        </mat-card-header>
+                        <form (submit)="onEditDetailProduct(detailproductForm)" #detailproductForm="ngForm"
+                            class="mt-5">
+                            <mat-card-content>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label class="armfont01">น้ำหนัก</mat-label>
+                                            <input matInput [(ngModel)]="mDetailProduct.weight" name="weight">
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label class="armfont01">ข้อมูลเพิ่มเติม</mat-label>
+                                            <textarea matInput [(ngModel)]="mDetailProduct.dataMore"
+                                                name="dataMore"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex justify-content-center"
+                                            *ngIf="imageSrc == null && mDetailProduct.image != null">
+                                            <img src="{{backendUrl}}{{mDetailProduct.image}}?timestamp={{timestamp}}"
+                                                class="img-fluid border rounded-top rounded-bottom w-50">
+                                        </div>
+                                        <!-- ภาพใหม่               ภาพไหม่มี  -->
+                                        <div class="col-md-12" *ngIf="imageSrc">
+                                            <img src="{{imageSrc}}" class="img-fluid border rounded-top rounded-bottom"
+                                                width="300px" height="100px">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-flat-button color="primary" class="armfont01" type="submit">บันทึก</button>
+                                <button mat-flat-button color="warn" class="ml-2 armfont01"
+                                    (click)="onClickCancel()">ยกเลิก</button>
+                            </mat-card-actions>
+                        </form>
+                    </mat-card>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

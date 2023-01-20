@@ -1,0 +1,61 @@
+@font-face {
+    font-family: arm;
+    src: url(../../../../../assets/fonts/Adminfont.ttf) format("opentype");
+  }
+
+
+  .armfont01 {
+    font-family: 'arm', 'arial', sans-serif;
+  }
+  .armfont02 {
+    font-size: 23px;
+    font-family: 'arm', 'arial', sans-serif;
+  }
+  #fontsize{
+    font-size: 70px;
+  }
+#fontsize01{
+    font-size: 10px;
+}
+table {
+    width: 100%;
+  }
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+  
+td, th {
+    width: 25%;
+
+  }
+
+.imgSize {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1rem;
+}
+
+
+th.mat-column-id, td.mat-column-id {
+  width: 250px;
+  
+}
+
+th.mat-column-email, td.mat-column-email {
+  width: 250px;
+  
+}
+th.mat-column-password, td.mat-column-password {
+  width: 250px;
+  
+}
+th.mat-column-image, td.mat-column-image {
+  width: 350px;
+  
+}
+th.mat-column-name, td.mat-column-name {
+  width: 250px;
+  
+}

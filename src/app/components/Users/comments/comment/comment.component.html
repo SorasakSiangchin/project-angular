@@ -1,0 +1,49 @@
+<div class="m-32">
+    <div class="d-flex justify-content-center">
+        <mat-card class="example-card w-100">
+            <form (submit)="onAddComment(commentForm)" #commentForm="ngForm">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title class="armfont01">ความคิดเห็นของคุณ</mat-card-title>
+                <mat-card-subtitle class="armfont01">ไอดีคุณ {{IdUer}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+    
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field class="example-full-width w-100" appearance="fill">
+                            <mat-label class="armfont01" >ข้อความ</mat-label>
+                            <textarea matInput [(ngModel)]="mCommentUpfile.dataComment" name="dataComment"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <button mat-stroked-button (click)="inputFile.click()" color="primary" type="button">
+                            <mat-icon>photo</mat-icon>
+                            <span class="armfont01">
+                                เพิ่มรูปภาพ
+                            </span>
+                        </button>
+                        <!-- change หรือ click ก็ได้ -->
+                        <!-- multiple เลือกหลายไฟล์ -->
+                        <input (change)="onUploadImage($event)" hidden #inputFile type="file" accept="image/*" multiple>
+                    </div>
+                    <div>
+                        <img *ngIf="imageSrc" (click)="ImageShow(imageSrc)" [src]="imageSrc"
+                            class="img-fluid border rounded-top rounded-bottom imageSize">
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-actions>
+                <div class="d-flex justify-content-center">
+                    <button *ngIf="mCommentUpfile.dataComment || imageSrc" mat-flat-button class="armfont01" type="submit" color="primary">ส่ง</button>
+                    <button mat-flat-button [routerLink]="[ '/data-comment' ]" type="button" color="accent" class="ml-2 armfont01">ข้อมูลที่ส่ง</button>
+                    <button mat-flat-button color="warn" type="button" (click)="onClickCancel()" class="ml-2 armfont01">กลับ</button>
+                </div>
+            </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center m-32" *ngIf="DataDeliverry;else data">
+  <div>
+    <mat-card class="example-card">
+
+      <mat-card-title class="armfont01 text-center"><strong>
+          <B>การจัดส่ง</B>
+        </strong></mat-card-title>
+      <mat-card-content>
+        <div class="armfont01">สถานะการจัดส่ง : <strong>{{DataDeliverry.idStatusNavigation.status}}</strong></div>
+        <div class="armfont01 mt-5">สินค้าถึงภายใน : <strong>{{DataDeliverry.date|date}}</strong></div>
+
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions>
+        <button mat-flat-button (click)="cancel()" color="warn">กลับ</button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
+<ng-template #data>
+  <div class="m-32">
+    <div class="text-danger armfont01 text-center">
+      รอการยืนยัน
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,466 @@
+<!-- banner part start-->
+<section class="banner_part">
+    <div class="container">
+        <div class="row align-items-center justify-content-center ">
+            <div class="col-lg-10 ">
+                <div class="banner_text text-center">
+                    <div class="banner_text_iner">
+                        <div class="mb-32">
+                            <h1 class="text-center-9xl armfont" id="fontsine"> โชค วาสนา</h1>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h3 class="armfont01 text-9xl text-center">จำหน่ายหินประดับ</h3>
+                                </div>
+                                <div>
+                                    <h3 class="armfont01 text-9xl text-center">หินจัดสวนทุกชนิด</h3>
+                                </div>
+                            </div>
+
+
+                            <a [routerLink]="[ '/loginadmin' ]" class="btn_1 italic armfont01">ผู้ดูและรบบ</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner part start-->
+
+<!-- booking part start-->
+<section class="booking_part mx-16">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="booking_menu">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active armfont01" id="hotel-tab" data-toggle="tab" href="#hotel"
+                                role="tab" aria-controls="hotel" aria-selected="true">เข้าสู่ระบบ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link armfont01" id="tricket-tab" data-toggle="tab" href="#tricket" role="tab"
+                                aria-controls="tricket" aria-selected="false">สมัครสมาชิก</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="booking_content">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
+                            <div>
+                                <form #loginForm='ngForm' (submit)="onSubmit(loginForm.value)">
+                                    <div class="alert mx-96" *ngIf="isError">
+                                        <span class="closebtn"
+                                            onclick="this.parentElement.style.display='none';">&times;</span>
+                                        <strong class="armfonr01">{{isError}}.</strong>
+                                    </div>
+                                    <div class="form-row">
+
+                                        <div class="col-md-5">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label class="armfont01">อีเมล</mat-label>
+                                                <input matInput ngModel #localemail="ngModel" name="Email" type="text"
+                                                    required
+                                                    [ngClass]="{'is-invalid':localemail.errors && localemail.touched}"
+                                                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                                                <mat-icon matSuffix>email</mat-icon>
+
+                                                <div class="invalid-feedback">
+                                                    <h5>
+                                                        กรุณาใส่ข้อมูล
+                                                    </h5>
+                                                </div>
+
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label class="armfont01">รหัสผ่าน</mat-label>
+                                                <input matInput ngModel name="Password" type="password"
+                                                    #localpassword="ngModel" required
+                                                    [ngClass]="{'is-invalid':localpassword.errors && localpassword.touched}"
+                                                    minlength="0" maxlength="100000">
+                                                <mat-icon matSuffix>password</mat-icon>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form_btn mt-1">
+                                            <button href="#" class="btn_1" [disabled]="loginForm.form.invalid"
+                                                type="submit">ตกลง</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tricket" role="tabpanel" aria-labelledby="tricket-tab">
+                            <div class="booking_form">
+                                <form (submit)="onAddUser(AppUserForm)" #AppUserForm="ngForm">
+
+                                    <div class="form-row">
+                                        <div class="col-md-1">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label class="armfont01">ใอดี</mat-label>
+                                                <input matInput #localID="ngModel" required minlength="0"
+                                                    maxlength="100000"
+                                                    [ngClass]="{'is-invalid': localID.errors && localID.touched}"
+                                                    type="number" [(ngModel)]="mUser.id" name="id">
+                                                <div class="invalid-feedback">
+                                                    กรุณากรอกข้อมูลให้ถูกต้อง
+                                                </div>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label class="armfont01">ชื่อ</mat-label>
+                                                <input matInput #localName="ngModel" required
+                                                    [ngClass]="{'is-invalid': localName.errors && localName.touched}"
+                                                    type="text" [(ngModel)]="mUser.name" name="name">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label class="armfont01">อีเมล</mat-label>
+                                                <input matInput #localEmail="ngModel" required
+                                                    [ngClass]="{'is-invalid': localEmail.errors && localEmail.touched}"
+                                                    type="email" [(ngModel)]="mUser.email" name="email">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label class="armfont01">รหัสผ่าน</mat-label>
+                                                <input matInput #localPassword="ngModel" required minlength="0"
+                                                    maxlength="100000"
+                                                    [ngClass]="{'is-invalid': localPassword.errors && localPassword.touched}"
+                                                    type="password" [(ngModel)]="mUser.password" name="password">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label class="armfont01">ที่อยู่</mat-label>
+                                                <textarea matInput #localAddress="ngModel" required
+                                                    [ngClass]="{'is-invalid': localAddress.errors && localAddress.touched}"
+                                                    [(ngModel)]="mUser.address" name="address"></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label class="armfont01">เบอร์โทร</mat-label>
+                                                <input matInput #localTel="ngModel" required
+                                                    [ngClass]="{'is-invalid': localTel.errors && localTel.touched}"
+                                                    type="number" [(ngModel)]="mUser.tel" name="tel">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-md-2">
+                                                <!-- พอ กด ที่ button ให้มาทำที่ input -->
+                                                <button mat-stroked-button (click)="inputFile.click()" color="primary"
+                                                    type="button">
+                                                    <mat-icon>photo</mat-icon>
+                                                    <span class="armfont01">
+                                                        รูปภาพ
+                                                    </span>
+                                                </button>
+                                                <!-- change หรือ click ก็ได้ -->
+                                                <input (change)="onUploadImage($event)" hidden #inputFile type="file"
+                                                    accept="image/*" id="">
+                                            </div>
+                                            <!-- *ngIf="imageSrc" -->
+                                            <div class="col-md-4" *ngIf="imageSrc">
+                                                <!-- [src]="imageSrc" -->
+                                                <img [src]="imageSrc"
+                                                    class="img-fluid border rounded-top rounded-bottom">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form_btn d-flex flex-row-reverse bd-highlight">
+                                        <div class="p-2 bd-highlight">
+                                            <button class="btn_1 armfont01" type="submit">บันทึก</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Header part end-->
+
+<!--top place start-->
+<section class="top_place section_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="section_tittle text-center">
+                    <h2 class="armfont01 fontsine01">หินนิยม</h2>
+                    <p class="armfont01 fontsine01">ร้านหิน โชควาสนา.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="single_place">
+                <img src="../../../../assets/img/arm-img/01.jpg" width="590px" class="imgsize">
+                <div class="hover_Text d-flex align-items-end justify-content-between">
+                    <div class="hover_text_iner">
+                        <a href="#" class="place_btn">travel</a>
+                        <h3>Saintmartine Iceland</h3>
+                        <p>Technaf, Bangladesh</p>
+                        <div class="place_review">
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <span>(210 review)</span>
+                        </div>
+                    </div>
+                    <div class="details_icon text-right">
+                        <i class="ti-share"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="single_place ml-24">
+                <img src="../../../../assets/img/arm-img/02.jpg" width="590px" class="imgsize">
+                <div class="hover_Text d-flex align-items-end justify-content-between">
+                    <div class="hover_text_iner">
+                        <a href="#" class="place_btn">travel</a>
+                        <h3>Saintmartine Iceland</h3>
+                        <p>Technaf, Bangladesh</p>
+                        <div class="place_review">
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <span>(210 review)</span>
+                        </div>
+                    </div>
+                    <div class="details_icon text-right">
+                        <i class="ti-share"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-24">
+            <div class="single_place">
+                <img src="../../../../assets/img/arm-img/03.jpg" width="590px" class="imgsize">
+                <div class="hover_Text d-flex align-items-end justify-content-between">
+                    <div class="hover_text_iner">
+                        <a href="#" class="place_btn">travel</a>
+                        <h3>Saintmartine Iceland</h3>
+                        <p>Technaf, Bangladesh</p>
+                        <div class="place_review">
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <span>(210 review)</span>
+                        </div>
+                    </div>
+                    <div class="details_icon text-right">
+                        <i class="ti-share"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="single_place ml-24">
+                <img src="../../../../assets/img/arm-img/04.jpg" width="590px" class="imgsize">
+                <div class="hover_Text d-flex align-items-end justify-content-between">
+                    <div class="hover_text_iner">
+                        <a href="#" class="place_btn">travel</a>
+                        <h3>Saintmartine Iceland</h3>
+                        <p>Technaf, Bangladesh</p>
+                        <div class="place_review">
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <span>(210 review)</span>
+                        </div>
+                    </div>
+                    <div class="details_icon text-right">
+                        <i class="ti-share"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="d-flex justify-content-center">
+    <!--top place end-->
+    <a href="#" class="btn_1 text-cnter">Discover more</a>
+</div>
+
+
+<!--::industries start::-->
+<section class="hotel_list section_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="section_tittle text-center">
+                    <h2>Top Hotel & Restaurants</h2>
+                    <p>Waters make fish every without firmament saw had. Morning air subdue. Our. Air very one. Whales
+                        grass is fish whales winged.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/ind/industries_1.png" alt="">
+                    <div class="hover_text">
+                        <div class="hotel_social_icon">
+                            <ul>
+                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="share_icon">
+                            <i class="ti-share"></i>
+                        </div>
+                    </div>
+                    <div class="hotel_text_iner">
+                        <h3> <a href="#"> Hotel Polonia</a></h3>
+                        <div class="place_review">
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <span>(210 review)</span>
+                        </div>
+                        <p>London, United Kingdom</p>
+                        <h5>From <span>$500</span></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/ind/industries_2.png" alt="">
+                    <div class="hover_text">
+                        <div class="hotel_social_icon">
+                            <ul>
+                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="share_icon">
+                            <i class="ti-share"></i>
+                        </div>
+                    </div>
+                    <div class="hotel_text_iner">
+                        <h3> <a href="#"> Hotel Polonia</a></h3>
+                        <div class="place_review">
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <span>(210 review)</span>
+                        </div>
+                        <p>London, United Kingdom</p>
+                        <h5>From <span>$500</span></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/ind/industries_3.png" alt="">
+                    <div class="hover_text">
+                        <div class="hover_text">
+                            <div class="hotel_social_icon">
+                                <ul>
+                                    <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                    <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                                    <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="share_icon">
+                                <i class="ti-share"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hotel_text_iner">
+                        <h3> <a href="#"> Hotel Polonia</a></h3>
+                        <div class="place_review">
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <span>(210 review)</span>
+                        </div>
+                        <p>London, United Kingdom</p>
+                        <h5>From <span>$500</span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--::industries end::-->
+
+
+
+<!--::industries start::-->
+<section class="best_services section_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="section_tittle text-center">
+                    <h2>We offered best services</h2>
+                    <p>Waters make fish every without firmament saw had. Morning air subdue. Our. Air very one. Whales
+                        grass is fish whales winged.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/services_1.png" alt="">
+                    <h3> <a href="#"> Transportation</a></h3>
+                    <p>All transportation cost we bear</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/services_2.png" alt="">
+                    <h3> <a href="#"> Guidence</a></h3>
+                    <p>We offer the best guidence for you</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/services_3.png" alt="">
+                    <h3> <a href="#"> Accomodation</a></h3>
+                    <p>Luxarious and comfortable</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/services_4.png" alt="">
+                    <h3> <a href="#"> Discover world</a></h3>
+                    <p>Best tour plan for your next tour</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--::industries end::-->
+
+
+<!-- footer part end-->

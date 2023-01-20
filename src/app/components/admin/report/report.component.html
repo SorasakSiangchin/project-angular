@@ -1,0 +1,62 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">รายงาน</h1>
+                </div>
+
+            </div>
+            <section class="section">
+                <div class="card ">
+                    <div class="content-wrapper p-4">
+                        <section class="content">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-info" (click)="drawChart('bar')">
+                                            <span>Bar</span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" (click)="drawChart('line')">
+                                            <span>Line</span>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" (click)="drawChart('pie')">
+                                            <span>Pie</span>
+                                        </button>
+                                        <button type="button" class="btn btn-warning" (click)="drawChart('radar')">
+                                            <span>Radar</span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" (click)="drawChart('polarArea')">
+                                            <span>polarArea</span>
+                                        </button>
+                                        <button type="button" class="btn btn-success" (click)="drawChart('doughnut')">
+                                            <span>doughnut</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="height: 500px;" class="col-xl-12 col-md-6">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

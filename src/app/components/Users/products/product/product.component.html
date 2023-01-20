@@ -1,0 +1,97 @@
+<!-- breadcrumb start-->
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item text-center">
+                        <h2 class="armfont01">สินค้า</h2>
+                        <p class="armfont01">โชควาสนา</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb start-->
+
+<!-- about us css start-->
+<section class="hotel_list section_padding single_page_hotel_list">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="section_tittle text-center">
+                    <h2 class="armfont01">หินทั้งหมด <strong>{{Numberproduct}}</strong>  รายการ</h2>
+                    <p class="armfont01">จำหน่ายหินประดับ หินจัดสวน ทุกชนิด</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6" *ngFor="let i of product">
+                <div class="single_ihotel_list">
+                    <img src="{{i.image}}" alt="" class="imageSize" >
+                    <div class="hotel_text_iner">
+                        <h3 class="armfont01"> <a href="#">{{i.name}}</a></h3>
+                        <div class="d-flex justify-content-between">
+                             <div>
+                                <h5 class="armfont01">ราคา : <span>฿{{i.price}}</span></h5>
+                             </div>
+                             <div>
+                                <button  mat-stroked-button color="primary" class="armfont01" [routerLink]="[ '/detailproduct-wed' , i.id , i.name , i.price , i.image , i.stock , i.color , i.shape]">ซื้อ</button> 
+                                <!-- <button mat-stroked-button color="accent" class="ml-2">Accent</button> -->
+                             </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about us css end-->
+
+<!--::industries start::-->
+<!-- <section class="best_services section_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="section_tittle text-center">
+                    <h2>We offered best services</h2>
+                    <p>Waters make fish every without firmament saw had. Morning air subdue. Our. Air very one. Whales
+                        grass is fish whales winged.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/services_1.png" alt="">
+                    <h3> <a href="#"> Transportation</a></h3>
+                    <p>All transportation cost we bear</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/services_2.png" alt="">
+                    <h3> <a href="#"> Guidence</a></h3>
+                    <p>We offer the best guidence for you</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/services_3.png" alt="">
+                    <h3> <a href="#"> Accomodation</a></h3>
+                    <p>Luxarious and comfortable</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_ihotel_list">
+                    <img src="assets/img/services_4.png" alt="">
+                    <h3> <a href="#"> Discover world</a></h3>
+                    <p>Best tour plan for your next tour</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!--::industries end::-->

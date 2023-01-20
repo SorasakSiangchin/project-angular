@@ -1,0 +1,54 @@
+<div class="m-32">
+    <div class="d-flex justify-content-center">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title class="armfont01">ใบสั่งที่ {{DataOrder.id}}</mat-card-title>
+                <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+            </mat-card-header>
+            <mat-divider inset class="m-2"></mat-divider>
+            <img class="m-auto" *ngIf="DataOrder.proofTransfer && status" mat-card-image
+                src="https://localhost:44360/{{DataOrder.proofTransfer}}" alt="Photo of a Shiba Inu">
+            
+            <img class="m-auto" *ngIf="!DataOrder.proofTransfer && status" mat-card-image src="assets/img/no-image.jpg" alt="Photo of a Shiba Inu">
+            
+           
+            <mat-card-content class="mt-3">
+                <div class="d-flex justify-content-between armfont01">
+                    <div>
+                        <B>
+                            ใบสั่งของ :
+                        </B>
+                        <strong>{{DataOrder.idUser}}</strong>
+                    </div>
+                    <div>
+                        <B>
+                            สถานะการจ่ายเงิน :
+                        </B>
+                        <strong>{{DataOrder.statusMoney?"จ่ายแล้ว":"ยังไม่จ่าย"}}</strong>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-2 armfont01">
+                    <div>
+                        <B>
+                            ราคารวม :
+                        </B>
+                        <strong>{{DataOrder.priceTotal}}</strong>
+                    </div>
+                    <div>
+                        <B>
+                            วันที่สั่ง :
+                        </B>
+                        <strong>{{DataOrder.date|date}}</strong>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="d-flex justify-content-center">
+                    <button mat-raised-button color="primary" class="armfont01" (click)="status=!status">ดูหลักฐานการโอน</button>
+                    <button mat-raised-button color="warn" class="armfont01" (click)="Bakc()">กลับ</button>
+                    <button mat-raised-button color="accent" [routerLink]="[ '/userdetail' ]" class="armfont01">ข้อมูลผู้ซื้อ</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

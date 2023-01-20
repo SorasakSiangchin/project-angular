@@ -1,0 +1,155 @@
+<div class="m-3"> 
+    <div class="d-flex justify-content-center">
+        <h1 class="armfont01">
+            โปรไฟล์ส่วนตัว
+        </h1>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+   
+    <mat-card class="example-card">
+        <mat-card-title-group>
+            <!-- --------------------------- รูปเอาไว้แก้ไข -------------------------------------- -->
+            <img mat-card-xl-image *ngIf="status && imageSrc == null && DataUser.image != null"
+                class="imageDesign m-auto" src="{{backendUrl}}{{DataUser.image}}?timestamp={{timestamp}}">
+            <img mat-card-xl-image *ngIf="status && imageSrc" class="imageDesign m-auto" src="{{imageSrc}}">
+            <!-- ------------------------------------------------------------------------------ -->
+            <!-- ------------------------ โชว์ข้อมูล User --------------------------------- -->
+            <mat-card-title *ngIf="!status">
+                <strong class="mr-5 armfont01">
+                    {{DataUser.name}}
+                </strong>
+            </mat-card-title>
+            <mat-card-subtitle class="armfont02" *ngIf="!status">
+                ไอดีที่
+                <strong>{{DataUser.id}}</strong>
+            </mat-card-subtitle>
+            <img mat-card-xl-image *ngIf="!status" class="imageDesign "
+                src="{{backendUrl}}{{DataUser.image}}?timestamp={{timestamp}}">
+
+            <!-- ----------------------------------------------------------------------- -->
+
+        </mat-card-title-group>
+        <form (submit)="onEditUser(userForm)" #userForm="ngForm">
+            <mat-card-content class="mt-3">
+                <!-- ------------------------- โชว์ข้อมูล User ---------------------------------------- -->
+                <div class="d-flex justify-content-between armfont01" *ngIf="!status">
+                    <div>
+                        อีเมล : <strong style="color: blue;">{{DataUser.email}}</strong>
+                    </div>
+                    <div>
+                        <strong style="color: rgb(255, 0, 55);">|</strong>
+                    </div>
+                    <div>
+                        รหัสผ่าน : <strong style="color: blue;">{{DataUser.password}}</strong>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between armfont01 mt-3" *ngIf="!status">
+                    <div>
+                        ที่อยู่ : <strong style="color: blue;">{{DataUser.address}}</strong>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between armfont01 mt-3" *ngIf="!status">
+                    <div>
+                        เบอร์โทร : <strong style="color: blue;">{{DataUser.tel}}</strong>
+                    </div>
+                </div>
+                <!-- ---------------------------------------------------------------------------------------- -->
+
+                <!-- -------------------------------- form สำหรับแก้ไขข้อมูล ------------------------------------ -->
+                <div class="row" *ngIf="status">
+                    <div class="col-md-2">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label class="armfont02"><strong>ไอดี</strong></mat-label>
+                            <input matInput [(ngModel)]="DataUser.id" #localemail="ngModel" name="id" type="number"
+                                required class="armfont02">
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                กรุณาใส่ข้อมูล <strong>ให้ถูกต้อง</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label class="armfont02"><strong>อีเมล</strong></mat-label>
+                            <input matInput [(ngModel)]="DataUser.email" #localemail="ngModel" name="email" type="email"
+                                required class="armfont02" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                กรุณาใส่ข้อมูล <strong>ให้ถูกต้อง</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label class="armfont02"><strong>ชื่อ</strong></mat-label>
+                            <input matInput [(ngModel)]="DataUser.name" #localemail="ngModel" name="name" type="email"
+                                required class="armfont02">
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                กรุณาใส่ข้อมูล <strong>ให้ถูกต้อง</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label class="armfont02"><strong>รหัสผ่าน</strong></mat-label>
+                            <input matInput [(ngModel)]="DataUser.password" #localpassword="ngModel" name="password"
+                                type="number" required class="armfont02">
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                กรุณาใส่ข้อมูล <strong>ให้ถูกต้อง</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row" *ngIf="status">
+                    <div class="col-md-3">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label class="armfont02"><strong>เบอร์โทร</strong></mat-label>
+                            <input matInput [(ngModel)]="DataUser.tel" #localpassword="ngModel" name="tel" type="number"
+                                required class="armfont02" maxlength="10" minlength="0">
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                กรุณาใส่ข้อมูล <strong>ให้ถูกต้อง</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-9">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label class="armfont02"><strong>ที่อยู่</strong></mat-label>
+                            <textarea matInput [(ngModel)]="DataUser.address" #localemail="ngModel" name="address"
+                                type="email" required class="armfont02"></textarea>
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                กรุณาใส่ข้อมูล <strong>ให้ถูกต้อง</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center" *ngIf="status">
+                    <div>
+                        <button mat-stroked-button color="primary" (click)="inputFile.click()" type="button">
+                            <mat-icon>photo</mat-icon>
+                            <span>Selected file</span>
+                        </button>
+                        <input (change)="onUploadImage($event)" hidden #inputFile type="file" accept="image/*" id="">
+                    </div>
+                </div>
+                <!-- ------------------------------------------------------------------------------------------- -->
+            </mat-card-content>
+            <hr>
+            <div class="d-flex justify-content-center armfont01 mt-3" *ngIf="!status">
+                <div>
+                    <button mat-mini-fab color="primary" (click)="status=!status"
+                        aria-label="Example icon button with a menu icon" type="button">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center armfont01 mt-3" *ngIf="status">
+                <div>
+                    <button mat-stroked-button color="primary" type="submit"
+                        class="armfont02"><strong>บันทึก</strong></button>
+                    <button mat-stroked-button color="warn" (click)="status=!status" type="button"
+                        class="armfont02 ml-2"><strong>กลับ</strong></button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</div>

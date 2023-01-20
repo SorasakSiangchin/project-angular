@@ -1,0 +1,42 @@
+@font-face {
+    font-family: arm;
+    src: url(../../../../../assets/fonts/Adminfont.ttf) format("opentype");
+  }
+.armfont {
+  font-family: 'arm', 'arial', sans-serif;
+}
+  .armfont01 {
+      font-size: 20px;
+    font-family: 'arm', 'arial', sans-serif;
+  }
+  .armfont02 {
+    font-size: 60px;
+    font-family: 'arm', 'arial', sans-serif;
+  }
+  #fontsize{
+    font-size: 25px;
+  }
+.fontsize01{
+    font-size: 23px;
+}
+#content{
+    width: 595px;
+    height: 842px;
+}
+
+.imgSize{
+    width: 50px;
+    height: 50px;
+}
+
+.a {
+  background-color: lightgrey;
+  width: 300px;
+  padding: 25px;
+  margin: 25px;
+}
+
+.b{
+  border:solid 5px rgb(2, 2, 2);
+  padding: 10px;
+}

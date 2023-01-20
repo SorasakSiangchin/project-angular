@@ -1,0 +1,75 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">ข้อมูลผู้ส่ง</h1>
+                </div>
+
+            </div>
+            <section>
+                <div class="card">
+                    <div class="m-32">
+                        <div class="d-flex justify-content-center">
+                            <mat-card class="example-card w-100">
+                                <mat-card-title-group>
+                                    <mat-card-title class="armfontX2">คุณ : {{DataUser.name}}</mat-card-title>
+                                    <mat-card-subtitle class="armfontX2">ไอดี : {{DataUser.id}}</mat-card-subtitle>
+                                    <img mat-card-xl-image class="image"
+                                        src="https://localhost:44360/{{DataUser.image}}">
+                                </mat-card-title-group>
+                                <mat-card-content>
+
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <div class="armfontX2">
+                                            อีเมล : <strong>{{DataUser.email}}</strong>
+                                        </div>
+                                        <div class="armfontX2">
+                                            รหัสผ่าน : <strong>{{DataUser.password}}</strong>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <div class="armfontX2">
+                                            ที่อยู่ : <strong>{{DataUser.address}}</strong>
+                                        </div>
+                                        <div class="armfontX2">
+                                            เบอร์โทรติดต่อ : <strong>{{DataUser.tel}}</strong>
+                                        </div>
+                                    </div>
+
+                                </mat-card-content>
+                                <mat-divider inset></mat-divider>
+                                <mat-card-actions>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="col-6">
+                                            <button (click)="back()" mat-stroked-button class="w-100" color="warn">
+                                                <mat-icon>arrow_back</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

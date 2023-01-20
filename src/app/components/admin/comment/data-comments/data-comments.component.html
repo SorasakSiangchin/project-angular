@@ -1,0 +1,86 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">ความคิดเห็น</h1>
+                </div>
+
+            </div>
+            <section>
+                <div class="card">
+                    <div class="row" *ngIf="DataComment.length != 0 ; else data">
+                        <div class="col-md-4 " *ngFor="let i of DataComment">
+                            <mat-card class="example-card w-100">
+                                <mat-card-header>
+                                    <mat-card-title class="armfontX2">จากผู้ใช้งานที่ <strong>{{i.idUser}}</strong>
+                                    </mat-card-title>
+                                    <mat-card-subtitle class="armfontX2">ไอดี : {{i.id}}</mat-card-subtitle>
+                                </mat-card-header>
+                                <img mat-card-image *ngIf="imageShow" class="m-auto image"
+                                    src="{{i.image}}?timestamp={{timestamp}}" alt="Photo of a Shiba Inu">
+                                <mat-card-content>
+                                    <div class="d-flex justify-content-center">
+                                        <div>
+                                            <p>
+                                                <B class="armfontX2">
+                                                    ส่งวันที่ :
+                                                </B>
+                                                <strong class="armfontX2">
+                                                    {{i.date|date}}
+                                                </strong>
+                                            </p>
+                                            <p>
+
+                                                <B class="armfontX2">
+                                                    ความคิดเห็น :
+                                                </B>
+                                                <strong class="armfontX2">
+                                                    {{i.dataComment}}
+                                                </strong>
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <div class="d-flex justify-content-center">
+                                        <div>
+                                            <button [routerLink]="[ '/menuadmin/data-user-comment', i.idUser ]" mat-raised-button color="primary"
+                                                class="armfontX2">ข้อมูลผู้ส่ง</button>
+                                            <button mat-raised-button (click)="imageShow=!imageShow" color="accent"
+                                                class="armfontX2">ดูรูปภาพ</button>
+                                            <button mat-raised-button [routerLink]="[ '/menuadmin/admin-respond-comment' , i.idUser ]" (click)="imageShow=!imageShow" color="warn"
+                                                class="armfontX2">ตอบกลับ</button>
+                                        </div>
+                                    </div>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <ng-template #data>
+                        <div class="m-32 m-auto">
+                            <div class="alert alert-secondary" role="alert">
+                                ไม่มีความคิดเห็น
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

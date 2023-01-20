@@ -1,0 +1,65 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">โชควาสนา นะจ้ะ</h1>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card ">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <mat-card-title class="armfont01">เพิ่มประเภทสินค้า</mat-card-title>
+                        </div>
+                        <div>
+                            <!-- (click)="onClickCancel()" -->
+                            <button type="button" mat-raised-button color="warn" class="armfont01"
+                                (click)="onClickCancel()">ยกเลิก</button>
+                        </div>
+                    </div><!-- (submit)="onEditProduct(userForm)" #userForm="ngForm" -->
+                            <form #typeproductForm="ngForm" (submit)="AddTypeProduct(typeproductForm.value)" class="example-form mt-5">
+                                <mat-card-header class="d-flex justify-content-between align-items-center">
+                                </mat-card-header>
+                                <mat-card-content class="mt-4">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label class="armfont01">ชื่อประเภทสินค้า</mat-label>
+                                        <input type="text" class="armfont01" matInput #localName="ngModel" required
+                                        [ngClass]="{'is-invalid': localName.errors && localName.touched}"
+                                        type="text" [(ngModel)]="mTypeProduct.name" name="Name"
+                                            placeholder="ข้อมูล">
+                                        <!-- <mat-hint>Errors appear instantly!</mat-hint>
+                                        <mat-error
+                                            *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                            Please enter a valid email address
+                                        </mat-error>
+                                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                                            Email is <strong>required</strong>
+                                        </mat-error> -->
+                                    </mat-form-field>
+                                    <div class="p-5">
+                                        <!-- [disabled]="productForm.form.invalid" -->
+                                        <button type="submit" [disabled]="typeproductForm.form.invalid" mat-raised-button color="primary" class="p-2"
+                                            class="armfont01 col-lg-12 ">บันทึก</button>
+                                    </div>
+                                </mat-card-content>
+                            </form>
+                        </div>
+            </section>
+        </div>
+        <footer class="mt-5">
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

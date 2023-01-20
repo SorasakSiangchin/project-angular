@@ -1,0 +1,34 @@
+@font-face {
+    font-family: arm;
+    src: url(../../../../../assets/fonts/Adminfont.ttf) format("opentype");
+  }
+  .armfont01 {
+      font-size: 20px;
+    font-family: 'arm', 'arial', sans-serif;
+  }
+  .armfont02 {
+    font-size: 40px;
+    font-family: 'arm', 'arial', sans-serif;
+  }
+  #fontsize{
+    font-size: 70px;
+  }
+
+  .example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  .card{
+    border: 3px;
+  }
+  
+  .card01:hover{
+    background-color: rgb(177, 176, 176);
+  }
+  .fontsize{
+      font-size: 30px;
+  }

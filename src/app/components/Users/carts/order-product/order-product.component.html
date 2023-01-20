@@ -1,0 +1,64 @@
+<div class="m-3">
+    <div class="row" >
+        <div class="col-md-4 mt-2" *ngFor="let i of DataOrder">
+            <mat-card class="example-card w-100 text01">
+                <div class="d-flex justify-content-between">
+                    <mat-card-subtitle class="armfont01 fs-6">ใบสั่งที่ : {{i.id}}</mat-card-subtitle>
+                    <a [routerLink]="[ '/order-detail', i.id ]"><mat-icon color="primary">info</mat-icon></a>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <mat-card-title class="armfont01">ไอดีของคุณ {{i.idUser}}</mat-card-title>
+                    </div>
+                    <div *ngIf="i.proofTransfer">
+                        <mat-card-title class="armfont01 text-success">ส่งหลักฐานแล้ว</mat-card-title>
+                    </div>
+                    <div *ngIf="!i.proofTransfer">
+                        <mat-card-title class="armfont01 text-danger">ยังไม่ส่งหลักฐาน</mat-card-title>
+                    </div>
+                </div>
+                <mat-card-content class="text p-2">
+                    <div class="d-flex justify-content-center">
+                        <div class="armfont01">
+                            ราคารวมที่ต้องจ่าย <strong>{{i.priceTotal}}</strong> บาท
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <div class="armfont01">
+                            สถานะการจ่ายเงิน : <strong *ngIf="i.statusMoney" class="text-success">จ่ายแล้ว</strong>
+                            <strong *ngIf="!i.statusMoney" class="text-danger">รอตรวจสอบ</strong>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-divider inset></mat-divider>
+                <mat-card-actions>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <!-- ------------------------ ปุ่มส่งหลักฐานการชำระเงิน -------------------------- -->
+                            <button mat-flat-button color="accent" class="armfont01 ml-1" type="button"
+                                [routerLink]="[ '/order-pay', i.id ]">ชำระเงิน</button>
+
+                            <!-- ----------------------------------- ปุ่มแสดงสินค้าใน Order ----------------------------------- -->
+                            <button mat-raised-button [routerLink]="[ '/order-list-product', i.id ]" color="primary"
+                                class="armfont01 ml-1">รายการสินค้า</button>
+
+                            <!-- ------------------------------- ปุ่มการจัดส่งสินค้าแสดงเมื่อ ส่งหลักฐานการชำระเงินแล้ว ---------------- -->
+                            <button *ngIf="i.statusMoney" [routerLink]="[ '/order-delivery', i.id ]" mat-flat-button
+                                color="warn" class="armfont01">การจัดส่ง</button>
+                        </div>
+                        <div>
+                            <!-- ------------------------ ปุ่มลบใบสั่ง แสดงเมื่อไม่มีสินค้าใน List ----------------------------- -->
+                            <button *ngIf="i.list.length == 0" type="button" (click)="DeleteOrderList(i.id)"
+                                mat-stroked-button color="warn">
+                                <mat-icon>delete_forever</mat-icon>
+                            </button>
+
+                        </div>
+                    </div>
+
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    
+</div>

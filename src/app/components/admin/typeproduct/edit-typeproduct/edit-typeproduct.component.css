@@ -1,0 +1,25 @@
+
+@font-face {
+    font-family: arm;
+    src: url(../../../../../assets/fonts/Adminfont.ttf) format("opentype");
+}
+
+
+.armfont01 {
+    font-family: 'arm', 'arial', sans-serif;
+}
+
+#fontsize{
+    font-size: 70px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    margin: auto;
+    width: 100%;
+}
+  
+.example-full-width {
+    width: 100%;
+}

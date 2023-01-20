@@ -1,0 +1,83 @@
+<section class="vh-100 armfont01" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <form #formadmin="ngForm" (submit)="onSubmit(formadmin.value)">
+                        <div class="card-body p-5 text-center">
+
+                            <h3 class="mb-5">
+                                <i class="fas fa-user-secret text-9xl" style="color:#508bfc ;"></i>
+                            </h3>
+                            <div class="form-outline mb-4">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-form-field w-100" appearance="fill">
+                                        <mat-label class="armfont01">อีเมล</mat-label>
+                                        <input matInput ngModel #localemail="ngModel" name="Email" type="email" required
+                                            [ngClass]="{'is-invalid':localemail.errors && localemail.touched}"
+                                            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                                        <div class="invalid-feedback">
+                                            <h5>
+                                                กรุณาใส่ข้อมูล
+                                            </h5>
+                                        </div>
+                                        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                                            (click)="value=''">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
+                                    </mat-form-field>
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <div class="col-md-12">
+
+
+                                    <div class="example-container ">
+                                        <mat-form-field appearance="fill" class="w-100">
+                                            <mat-label class="armfont01">รหัสผ่าน</mat-label>
+                                            <input matInput [type]="hide ? 'password' : 'text'" ngModel
+                                                #localpassword="ngModel" name="Password" type="number" required
+                                                [ngClass]="{'is-invalid':localpassword.errors && localpassword.touched}">
+                                            <div class="invalid-feedback">
+                                                <h5>
+                                                    กรุณาใส่ข้อมูล
+                                                </h5>
+                                            </div>
+                                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        <h5>
+                                            กรุณาใส่ข้อมูล
+                                        </h5>
+                                    </div>
+                                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                                        (click)="value=''">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+
+
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">เข้าสู่ระบบ</button>
+
+                            <hr class="my-4">
+
+                            <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
+                                (click)="Back()" type="button">กลับ</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

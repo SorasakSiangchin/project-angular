@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center m-5" >
+    <mat-card class="example-card frame1 p-3">
+        <mat-card-header class="d-flex justify-content-center">
+            <mat-card-title class="armfont01">{{DetailCart.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{backendUrl}}{{DetailCart.image}}" alt="Photo of a Shiba Inu" class="m-auto">
+        <mat-card-content class="mt-3">
+            <div class="d-flex justify-content-between">
+                <div class="armfont01">
+                    ราคา : <strong><B>{{DetailCart.price}}</B></strong>
+                </div>
+                <div class="armfont01">
+                    จำนวนปัจจุบัน : <strong><B>{{DetailCart.stock}}</B></strong>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <div class="armfont01">
+                    รูปร่าง : <strong><B>{{DetailCart.shape}}</B></strong>
+                </div>
+                <div class="armfont01">
+                    สี : <strong><B>{{DetailCart.color}}</B></strong>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="d-flex justify-content-center">
+                <div><button mat-flat-button color="accent" class="armfont01" [routerLink]="[ '/imagedetailproductcart', DetailCart.id ]" type="button">รายละเอียดรูปภาพ</button></div>
+                <div class="ml-2"><button mat-flat-button color="warn" class="armfont01" (click)="onClickCancel()">กลับ</button></div>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+

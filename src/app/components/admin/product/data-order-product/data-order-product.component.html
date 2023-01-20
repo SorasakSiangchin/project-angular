@@ -1,0 +1,126 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">สั่งซื้อสินค้า นะจ้ะ</h1>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card">
+                    <div class="mt-4 mb-4">
+                        <div class="d-flex justify-content-between">
+                            <div>
+
+                            </div>
+                            <div>
+                                <button mat-flat-button color="primary"
+                                    [routerLink]="[ '/menuadmin/create-order-product' ]"
+                                    class="armfontX2">สั่งสินค้าเพิ่ม</button>
+                                <button *ngIf="ConfirmOrderID" mat-raised-button color="accent" (click)="ConfirmOrder()"
+                                    class="armfontX2 ml-2">ยืนยันการสั่งซื้อ
+                                    <strong>{{numIdlocal}}</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="DataOrderProduct.length != 0;else data">
+                        <div class="col-md-4" *ngFor="let i of DataOrderProduct">
+                            <mat-card class="example-card w-100">
+                                <mat-card-title class="armfontX2 text-center"><strong>สั่งสินค้าเพิ่ม</strong>
+                                </mat-card-title>
+                                <mat-card-subtitle class="armfontX2 text-center mt-3">
+                                    ใบสั่งที่
+                                    <strong>
+                                        {{i.id}}
+                                    </strong>
+                                </mat-card-subtitle>
+                                <mat-card-content>
+                                    <p class="armfontX2">
+                                        <B>
+                                            ไอดีสินค้าที่สั่ง :
+                                        </B>
+                                        <strong>
+                                            {{i.idProduct}} <a [routerLink]="[ '/' ]"><mat-icon color="primary">description</mat-icon></a>
+                                        </strong>
+                                    </p>
+                                    <p class="armfontX2">
+                                        <B>
+                                            สั่งวันที่ :
+                                        </B>
+                                        <strong>
+                                            {{i.date|date}}
+                                        </strong>
+                                    </p>
+                                    <p class="armfontX2">
+                                        <B>
+                                            จำนวนที่สั่ง :
+
+                                        </B>
+                                        <strong>
+                                            {{i.stock}}
+                                        </strong>
+                                    </p>
+                                    <p class="armfontX2">
+                                        <B>
+                                            สถานะการสั่งซื้อ :
+                                        </B>
+                                        <strong>
+                                            {{i.idStatusNavigation.name}}
+                                        </strong>
+                                    </p>
+                                </mat-card-content>
+                                <mat-divider inset></mat-divider>
+                                <mat-card-actions>
+                                    <div class="d-flex justify-content-between">
+                                        <button *ngIf="i.idStatus == 1 ; else result" mat-stroked-button color="primary"
+                                            (click)="ProductArrived(i)" class="armfontX2">สินค้ามาถึงแล้ว</button>
+                                        <ng-template #result>
+                                            <div class="m-auto">
+                                                <div class="text-success row">
+                                                    <strong><mat-icon>check</mat-icon></strong>
+                                                    <h2 class="text-success text-center armfontX2">
+                                                        รอยืนยันแล้ว
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                                
+                                        </ng-template>
+                                        <button *ngIf="i.idStatus == 1" (click)="DeleteOrderProduct(i.id)" mat-stroked-button color="warn">
+                                            <mat-icon>
+                                                delete_forever
+                                            </mat-icon>
+                                        </button>
+                                    </div>
+                                </mat-card-actions>
+                            </mat-card>
+
+                        </div>
+                    </div>
+                    <ng-template #data>
+                        <div class="m-auto">
+                            <div class="alert alert-danger" role="alert">
+                                <div>
+                                    ไม่มีรายการสั่งซื้อ
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

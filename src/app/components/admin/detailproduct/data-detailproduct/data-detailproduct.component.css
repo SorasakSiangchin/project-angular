@@ -1,0 +1,52 @@
+@font-face {
+    font-family: arm;
+    src: url(../../../../../assets/fonts/Adminfont.ttf) format("opentype");
+  }
+
+
+  .armfont01 {
+    font-family: 'arm', 'arial', sans-serif;
+  }
+  .armfont02 {
+    font-size: 23px;
+    font-family: 'arm', 'arial', sans-serif;
+  }
+  #fontsize{
+    font-size: 70px;
+  }
+#fontsize01{
+    font-size: 10px;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+th.mat-column-weight, td.mat-column-weight{
+  width: 100px;
+  
+}
+th.mat-column-dataMore, td.mat-column-dataMore{
+  width: 200px;
+  
+}
+th.mat-column-idProduct, td.mat-column-idProduct{
+  width: 100px;
+  
+}
+th.mat-column-id, td.mat-column-id{
+  width: 150px;
+  
+}
+th.mat-column-image, td.mat-column-image{
+  width: 200px;
+  
+}
+  

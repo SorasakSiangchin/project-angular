@@ -1,0 +1,105 @@
+<!-- breadcrumb start-->
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item text-center">
+                        <h2 class="armfont01">รายละเอียดสินค้า</h2>
+                        <p class="armfont01">โชควาสนา</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb start-->
+
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 posts-list">
+                <h1 class="text-center armfont01 fontsine01">
+                    {{name}}
+                </h1>
+                <div class="single-post">
+                    <div class="blog_details d-flex justify-content-center">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                            </mat-card-header>
+                            <img mat-card-image [src]="image" alt="Photo of a Shiba Inu">
+                            <mat-card-content>
+                                <div class="quote-wrapper mt-3">
+                                    <div class="quotes">
+                                        <div class="d-flex justify-content-around">
+                                            <div>
+                                                <h2 class="armfont01">ราคา : <strong>{{price}}</strong></h2>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h2 class="armfont01">จำนวนสินค้า : <strong>{{stock}}</strong></h2>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <div>
+                                                <h2 class="armfont01">สี : <strong>{{color}}</strong></h2>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h2 class="armfont01">รูปร่าง : <strong>{{shape}}</strong></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-actions class="d-flex justify-content-center">
+                                <div>
+                                    <button mat-raised-button color="primary" class="armfont01 p-2" [routerLink]="[ '/imagedetailproductcart' , id ]">ข้อมูลเพิ่มเติม</button>
+                                    <button mat-raised-button color="warn" class="ml-2 armfont01 p-2"
+                                        (click)="back()">กลับ</button>
+                                </div>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 d-flex justify-content-center">
+        <mat-card class="example-card">
+            <div class="d-flex justify-content-center">
+                <div>
+                    <h3 class="armfont01">
+                        เพิ่มสินค้าเลย
+                    </h3>
+                </div>
+            </div>
+            <mat-card-content>
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>จำนวนสินค้าที่ต้องการ</mat-label>
+                            <input matInput type="number" [(ngModel)]="value" max="{{stock}}" min="0" #localStock="ngModel" name="stock">
+                            <mat-icon matSuffix>add_shopping_cart</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="stock" [min]="min"
+                        [step]="step" [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()"
+                        [(ngModel)]="value" [vertical]="vertical" aria-labelledby="example-name-label">
+                    </mat-slider>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button *ngIf="value != 0" mat-raised-button color="accent" class="armfont02" type="button"
+                        (click)="addToCart(value)">เพิ่มสินค้า</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</section>
+
+
+
+<!--================ Blog Area end =================-->

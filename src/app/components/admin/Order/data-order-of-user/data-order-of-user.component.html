@@ -1,0 +1,83 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">รายการสั่งซื้อสินค้า นะจ้ะ</h1>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card">
+                    <div class="row" *ngIf="NumberOrder != 0 ; else data">
+                        <div class="col-md-4" *ngFor="let i of DataOrder">
+                            <mat-card>
+                                <div class="d-flex justify-content-between">
+                                    <div></div>
+                                    <div>
+                                        <mat-card-title class="text-center armfont">ไอดีผู้สั่ง : {{i.idUser}}
+                                        </mat-card-title>
+                                        <mat-card-subtitle *ngIf="i.statusMoney"
+                                            class="armfont text-center text-success">
+                                            ยืนยันเรียบร้อย</mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="!i.statusMoney"
+                                            class="armfont text-center text-danger">
+                                            ยังไม่ยืนยัน</mat-card-subtitle>
+                                    </div>
+                                    <div>
+                                        <button [routerLink]="[ '/menuadmin/order-pdf' , i.id]" matTooltip="ใบเสร็จสินค้า"><i
+                                                class="fas fa-file-alt text-primary"></i></button>
+                                    </div>
+                                </div>
+
+                                <mat-card-title-group>
+                                    <!-- ภาพเดิม                            ภาพเก่ามี         -->
+                                    <div class="m-auto" *ngIf="i.proofTransfer != null">
+                                        <img src="{{backendUrl}}{{i.proofTransfer}}?timestamp={{timestamp}}"
+                                            class="img-fluid border rounded-top rounded-bottom ImageSize">
+                                    </div>
+                                    <img mat-card-xl-image *ngIf="!i.proofTransfer" class="m-auto"
+                                        src="assets/img/no-image.jpg">
+                                </mat-card-title-group>
+                                <mat-card-actions>
+                                    <div class="d-flex justify-content-center">
+                                        <button mat-raised-button color="primary" class="armfont01"
+                                            *ngIf="!i.statusMoney && i.statusMoney != null "
+                                            (click)="ConfirmOrder(i)">ยืนยันการชำระเงิน</button>
+                                        <button mat-raised-button color="warn" class="armfont01"
+                                            [routerLink]="[ '/menuadmin/detail-order', i.id ]">รายละเอียด</button>
+                                        <button mat-raised-button *ngIf="i.statusMoney"
+                                            [routerLink]="[ '/menuadmin/deliveryr-order', i.id ]" color="accent"
+                                            class="armfont01">การจัดส่ง</button>
+                                    </div>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <ng-template #data>
+                        <div class="m-32">
+                            <div class="m-auto col-4">
+                                <div class="alert alert-info text-center" role="alert">
+                                    <div class="m-2">
+                                        ไม่มรายการสั่งซื้อ !
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

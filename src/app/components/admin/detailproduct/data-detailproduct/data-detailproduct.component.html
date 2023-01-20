@@ -1,0 +1,102 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">รายละเอียดสินค้า นะจ้ะ</h1>
+                </div>
+            </div>
+            <section>
+                <div class="card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label class="armfont01">ค้นหา</mat-label>
+                                <input matInput class="armfont01" (keyup)="applyFilter($event)" #input>
+                                <mat-icon matSuffix>search</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <button [routerLink]="[ '/menuadmin/createdetailproduct' ]" mat-raised-button color="accent"
+                                class="armfont01 w-100">เพิ่มสินค้า</button>
+                        </div>
+                    </div>
+                    <br>
+
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef class="armfont01"> ไอดี </th>
+                            <td mat-cell *matCellDef="let element"> {{element.id|slice:0:6}}.. </td>
+                        </ng-container>
+                        <ng-container matColumnDef="idProduct">
+                            <th mat-header-cell *matHeaderCellDef class="armfont01"> ไอดีสินค้า </th>
+                            <td mat-cell *matCellDef="let element"> {{element.idProduct}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="image">
+                            <th mat-header-cell *matHeaderCellDef class="armfont01">รูปภาพ</th>
+                            <td mat-cell *matCellDef="let element">
+                                <div (click)="showDetail(element)">
+                                    <img class="imgSize m-2" src="{{element.image}}?timestamp={{timestamp}}" width="30%"
+                                        alt="">
+                                </div>
+                            </td>
+                        </ng-container>
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="weight">
+                            <th mat-header-cell *matHeaderCellDef class="armfont01"> น้ำหนัก </th>
+                            <td mat-cell *matCellDef="let element"> {{element.weight?element.weight:"-"}} </td>
+                        </ng-container>
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="dataMore">
+                            <th mat-header-cell *matHeaderCellDef class="armfont01"> ข้อมูลเพิ่มเติม </th>
+                            <td mat-cell *matCellDef="let element"> {{element.dataMore?element.dataMore:"-"}} </td>
+                        </ng-container>
+
+
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef class="armfont01"> เมนู </th>
+                            <td mat-cell *matCellDef="let element">
+                                <mat-button-toggle-group name="favoriteColor" class="m-3" aria-label="Favorite Color">
+                                    <mat-button-toggle value="red"
+                                        [routerLink]="[ '/menuadmin/editdetailproduct' , element.id ]">
+                                        <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">
+                                            edit</mat-icon>
+                                    </mat-button-toggle>
+                                    <mat-button-toggle value="green" (click)="deleteDetailProductId(element.id)">
+                                        <mat-icon aria-hidden="false" aria-label="Example home icon" color="warn">delete
+                                        </mat-icon>
+                                    </mat-button-toggle>
+                                    <!-- <mat-button-toggle value="blue">Blue</mat-button-toggle> -->
+                                </mat-button-toggle-group>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                        <!-- Row shown when there is no matching data. -->
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell armfont01" colspan="4" >ไม่มีข้อมูล "{{input.value}}"</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

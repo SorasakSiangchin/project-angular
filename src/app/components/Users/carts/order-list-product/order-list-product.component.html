@@ -1,0 +1,40 @@
+<div class="m-5">
+    <div class="m-5">
+        <div class="d-flex justify-content-center">
+            <div class="armfont01 fontsize">
+                <i>รายการทั้งหมด</i>  <strong class="text-success p-3"><i>{{NumberDataList}}</i></strong> <i>รายการ</i> 
+            </div>
+           </div>
+    </div>
+    
+    <div class="row ">
+        <div class="col-md-4 mt-3" *ngFor="let i of DataListProduct">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="armfont01"><strong> รายการสินค้าที่ :</strong> {{i.id}}</mat-card-title>
+
+                    <mat-card-subtitle class="armfont01 mt-1"><strong> ชื่อสินค้า
+                            :</strong>{{i.idProduckNavigation.name}}</mat-card-subtitle>
+                </mat-card-header>
+                <img class="m-auto imageSize" mat-card-image
+                    src="https://localhost:44360/{{i.idProduckNavigation.image}}" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <div class="d-flex justify-content-around mt-3">
+                        <div class="armfont01"> ราคา : {{i.priceProduct}}</div>
+                        <div class="armfont01"> จำนวนที่สั่ง : {{i.numberProduct}} </div>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <div class="d-flex justify-content-center">
+                        <button mat-flat-button *ngIf="!i.idOrderNavigation.proofTransfer" (click)="CancelProductList(i)" class="armfont01"
+                            color="warn">ยกเลิกการสั่งซื้อสินค้าชิ้นนี้</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+    </div>
+
+
+</div>

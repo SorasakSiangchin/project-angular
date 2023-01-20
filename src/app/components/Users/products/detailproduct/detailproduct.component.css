@@ -1,0 +1,104 @@
+@font-face {
+    font-family: lato;
+    src: url(../../../../../assets/fonts/TAChailai.otf) format("opentype");
+  }
+
+@font-face {
+    font-family: arm;
+    src: url(../../../../../assets/fonts/tahomo.ttf) format("opentype");
+  }
+
+.armfont {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-family: 'lato', 'arial', sans-serif;
+  }
+
+.armfont01 {
+    font-size: 30px;
+    font-family: 'arm', 'arial', sans-serif;
+  }
+.armfont02 {
+  font-size: 20px;
+  font-family: 'arm', 'arial', sans-serif;
+}
+#fontsine{
+    font-size: 200px;
+}
+#fontsine01{
+  font-size: 63px;
+}
+img {
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    transition: 0.3s;
+    margin: auto;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px rgba
+    (0, 140, 186, 0.5);
+}
+
+.example-card {
+  max-width: 750px;
+}
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.example-h2 {
+  margin: 0 8px 16px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 8px;
+}
+
+.mat-slider-horizontal {
+  width: 300px;
+}
+
+.mat-slider-vertical {
+  height: 300px;
+}
+
+.mat-card + .mat-card {
+  margin-top: 8px;
+}
+
+.example-result-card h2 {
+  margin: 0 8px;
+}
+
+.example-result-card .example-label-container.example-label-horizontal {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 12px 16px;
+  max-width: 284px;
+}
+
+.example-result-card .example-label-container.example-label-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 68px;
+  height: 48px;
+}
+
+.example-result-card .example-value-label {
+  font-weight: 600;
+}

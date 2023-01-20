@@ -1,0 +1,25 @@
+<div *ngIf="numberCheck != 0;else data">
+    <div class="row">
+        <div class="col-md-3 mt-2" *ngFor="let i of images">
+            <mat-card class="example-card">
+                <mat-card-title-group>
+                    <mat-card-title>Shiba Inu</mat-card-title>
+                    <mat-card-subtitle>Extra large</mat-card-subtitle>
+                    <img mat-card-xl-image src="{{backendUrl}}{{i.image}}">
+                </mat-card-title-group>
+                <mat-card-content>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<ng-template #data>
+    <div class="d-flex justify-content-center m-20">
+        <div class="alert alert-dark armfont01" role="alert">
+            <div class="p-10">
+                ไม่มีข้อมูล!
+            </div>
+          </div>
+    </div>
+</ng-template>

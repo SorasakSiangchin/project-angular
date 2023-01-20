@@ -1,0 +1,143 @@
+<div id="app" class="armfont01">
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="page-heading">
+                    <h1 class="armfont01 text-center" id="fontsize">โชควาสนา นะจ้ะ</h1>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card ">
+                    <mat-card>
+                        <!-- (submit)="onEditProduct(userForm)" #userForm="ngForm" -->
+                        <form (submit)="onAddUser(userForm)" #userForm="ngForm">
+                            <mat-card-header class="d-flex justify-content-between align-items-center">
+                                <mat-card-title class="armfont01">เพิ่มสมาชิก</mat-card-title>
+                                <div>
+                                    <!-- [disabled]="productForm.form.invalid" -->
+                                    <button type="submit" mat-raised-button color="primary" class="p-2"
+                                        class="armfont01">บันทึก</button> |
+                                    <!-- (click)="onClickCancel()" -->
+                                    <button type="button" mat-raised-button color="warn" class="armfont01"
+                                        (click)="onClickCancel()">ยกเลิก</button>
+                                </div>
+                            </mat-card-header>
+                            <mat-card-content class="mt-4">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <mat-form-field class="example-form-field w-100" appearance="fill">
+                                            <mat-label class="armfont01">ไอดี</mat-label>
+                                            <input matInput type="text" [(ngModel)]="mUser.id" #localID="ngModel"
+                                                name="id" required
+                                                [ngClass]="{'is-invalid': localID.errors && localID.touched}">
+                                            <button matSuffix mat-icon-button aria-label="Clear" type="button"
+                                                (click)="arm()">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-form-field w-100" appearance="fill">
+                                            <mat-label class="armfont01">อีเมล</mat-label>
+                                            <input matInput type="text" [(ngModel)]="mUser.email" #localEmail="ngModel"
+                                                required name="email"
+                                                [ngClass]="{'is-invalid': localEmail.errors && localEmail.touched}">
+                                            <button matSuffix mat-icon-button aria-label="Clear" type="button"
+                                                (click)="mUser.email=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <mat-form-field class="example-form-field w-100" appearance="fill">
+                                            <mat-label class="armfont01">รหัสผ่าน</mat-label>
+                                            <input matInput type="text" [(ngModel)]="mUser.password"
+                                                #localPassword="ngModel" required name="password"
+                                                [ngClass]="{'is-invalid': localPassword.errors && localPassword.touched}">
+                                            <button matSuffix mat-icon-button aria-label="Clear" type="button"
+                                                (click)="mUser.password=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <mat-form-field class="example-form-field w-100" appearance="fill">
+                                            <mat-label class="armfont01">ชื่อ</mat-label>
+                                            <input matInput type="text" [(ngModel)]="mUser.name" #localName="ngModel"
+                                                required name="name"
+                                                [ngClass]="{'is-invalid': localName.errors && localName.touched}">
+                                            <button matSuffix mat-icon-button aria-label="Clear" type="button"
+                                                (click)="mUser.name=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-3">
+                                        <mat-form-field class="example-form-field w-100" appearance="fill">
+                                            <mat-label class="armfont01">เบอร์โทร</mat-label>
+                                            <input matInput type="text" [(ngModel)]="mUser.tel" #localTel="ngModel"
+                                                required name="tel" maxlength="10"
+                                                [ngClass]="{'is-invalid': localTel.errors && localTel.touched}">
+                                            <button matSuffix mat-icon-button aria-label="Clear" type="button"
+                                                (click)="mUser.tel=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <mat-form-field class="example-form-field w-100" appearance="fill">
+                                            <mat-label class="armfont01">ที่อยู่</mat-label>
+                                            <button matSuffix mat-icon-button aria-label="Clear" type="button"
+                                                (click)="mUser.address=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                            <textarea matInput [(ngModel)]="mUser.address" #localAddress="ngModel"
+                                                required name="address"
+                                                [ngClass]="{'is-invalid': localAddress.errors && localAddress.touched}"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </mat-card-content>
+                        </form>
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <!-- พอ กด ที่ button ให้มาทำที่ input -->
+                                <button mat-stroked-button (click)="inputFile.click()" color="primary" type="button">
+                                    <mat-icon>photo</mat-icon>
+                                    <span class="armfont01">
+                                        รูปภาพ
+                                    </span>
+                                </button>
+                                <!-- change หรือ click ก็ได้ -->
+                                <input (change)="onUploadImage($event)" hidden #inputFile type="file" accept="image/*">
+                            </div>
+                            <div class="col-md-4" *ngIf="imageSrc">
+                                <!-- [src]="imageSrc" -->
+                                <img [src]="imageSrc" class="img-fluid border rounded-top rounded-bottom">
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start armfont01">
+                    <p class="armfont01">2021 &copy; โชควาสนา</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
